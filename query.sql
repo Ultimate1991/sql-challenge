@@ -92,3 +92,19 @@ ON dept_manager.dept_no = departments.dept_no;
 SELECT * FROM employees
 WHERE first_name LIKE 'Hercules' 
 AND last_name LIKE 'B%';
+
+SELECT dept_employee.emp_no, employees.last_name, employees.first_name, departments.dept_name
+FROM dept_employee
+JOIN employees
+ON dept_employee.emp_no = employees.emp_no
+JOIN departments
+ON dept_employee.dept_no = departments.dept_no
+WHERE departments.dept_name = 'Sales';
+
+
+SELECT last_name AS "LAST NAME",
+COUNT(last_name) AS "FREQUENCY COUNT OF EMPLOYEE LAST NAMES"
+FROM employees
+GROUP BY last_name
+ORDER BY
+COUNT(last_name) DESC;
