@@ -60,6 +60,35 @@ ALTER TABLE "dept_manager" ADD CONSTRAINT "id_dept_manager_emp_no" FOREIGN KEY("
 REFERENCES "employees" ("emp_no");
 
 SELECT * FROM employees;
+Select * From employees;
 
 SELECT * FROM employees
 WHERE hire_date BETWEEN '1986-01-01' AND '1986-12-31';
+
+SELECT * FROM departments;
+SELECT * FROM dept_manager; 
+SELECT * FROM employees;
+
+SELECT employees.emp_no, dept_manager.dept_no, employees.first_name, employees.last_name,
+employees.hire_date, dept_manager.from_date, dept_manager.to_date
+FROM employees 
+INNER JOIN dept_manager 
+ON employees.emp_no = dept_manager.emp_no;
+
+SELECT employees.emp_no, dept_manager.dept_no, departments.dept_name, employees.last_name, 
+employees.first_name,employees.hire_date, dept_manager.from_date, dept_manager.to_date
+FROM employees 
+INNER JOIN dept_manager
+ON employees.emp_no = dept_manager.emp_no
+INNER JOIN departments 
+ON dept_manager.dept_no = departments.dept_no;
+
+SELECT employees.emp_no, employees.last_name, employees.first_name, departments.dept_name
+FROM employees INNER JOIN dept_manager 
+ON employees.emp_no = dept_manager.emp_no
+INNER JOIN departments 
+ON dept_manager.dept_no = departments.dept_no;
+
+SELECT * FROM employees
+WHERE first_name LIKE 'Hercules' 
+AND last_name LIKE 'B%';
